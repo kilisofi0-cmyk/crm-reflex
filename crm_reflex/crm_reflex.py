@@ -338,22 +338,18 @@ def navbar():
     )
 
 def sidebar():
-    items = [
-        ("upload", "📤", "Загрузка"),
-        ("analytics", "📊", "Аналитика"),
-    ]
-    
     return rx.box(
         rx.vstack(
-            *[
-                rx.button(
-                    f"{icon} {label}",
-                    on_click=lambda p=page: State.navigate(p),
-                    variant="solid" if State.current_page == page else "ghost",
-                    width="100%"
-                )
-                for page, icon, label in items
-            ],
+            rx.button(
+                "📤 Загрузка",
+                on_click=lambda: State.navigate("upload"),
+                width="100%"
+            ),
+            rx.button(
+                "📊 Аналитика",
+                on_click=lambda: State.navigate("analytics"),
+                width="100%"
+            ),
             spacing="2",
             padding="1rem"
         ),
@@ -545,4 +541,3 @@ def index():
 
 app = rx.App()
 app.add_page(index)
-
